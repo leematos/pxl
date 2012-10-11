@@ -1,14 +1,14 @@
-Conversion of the Guardian ambient radio station to Javascript
+A pxl implementation in JS
 ==============================================================
 
-An attempt to make javascript play ambient music and speak the latest Guardian headlines.
+Based on Code by Rev Dan Catt, this is a stripped down version to just implement PXL in canvas.
 
-Only tested in Chrome & Firefox
-Doesn't seem to work in Safari, not tested in IE
+Goals
+===========
+Full Cross Browser Compatibility.
+Speed
+Small Size
 
-Running here: http://revdancatt.github.com/project-0016-guardian-ambient-headline-radio/
-
-The page polls the Guardian Content API for the latest headlines, if it sees one it hasn't spotted before then it "announces" it and changes the background image.
 
 NOTES
 -----
