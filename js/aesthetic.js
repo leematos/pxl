@@ -4,7 +4,6 @@ aesthetic = {
   tileMap: null,
   tileObj: null,
   tilesAcross: 20,
-  destroyImageTmr: null,
 
 
   //  This function loads in the thumbnail image, sadly because the Guardian doesn't have CORS
@@ -38,8 +37,6 @@ aesthetic = {
       
       //  TODO: add error checking to this response
       function(json) {
-        //  We have the data back (I assume anyway, hah get me!)
-        //  shove it into the source.
         $('img#holder').attr('src', json.data);
       }
     );
@@ -340,48 +337,5 @@ aesthetic = {
       }
     }
 
-  },
-
-  //  This function will start destroying the background image
-  destroyImage: function() {
-
-    if (control.broadcasting) {
-      clearTimeout(aesthetic.destroyImageTmr);
-      return;
-    }
-    
-    //  If I *were* to use Pixastic, this is where I'd do it
-    try {
-      ct=$('#targetCanvas')[0];
-      Pixastic.process(ct, "glow", {amount:0.003,radius:3.0});
-      ct=$('#targetCanvas')[0];
-      Pixastic.process(ct, "noise", {mono:true,amount:0.01,strength:0.05});
-      ct=$('#targetCanvas')[0];
-      Pixastic.process(ct, "blurfast", {amount:0.04});
-    } catch(er) {
-      // Ignore
-    }
-
-  },
-
-  cheat: function() {
-
-    //  get the image URL
-    var thumb = 'Guardian/Pix/pictures/2012/3/14/1331747333169/A-disabled-woman-in-a-whe-003.jpg';
-
-    //  remove an old image
-    $('img#holder').remove();
-    $('body').append($('<img>').attr('id', 'holder'));
-    $('img#holder').load(function() {aesthetic.copyToCanvas();});
-
-    //  Go and get the latest headline...
-    $.getJSON("http://gu-tools-v3.appspot.com/img_to_json?img=" + thumb + "&callback=?",
-      //  TODO: add error checking to this response
-      function(json) {
-        $('img#holder').attr('src', json.data);
-      }
-    );
-
   }
-
 };
