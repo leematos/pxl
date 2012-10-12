@@ -1,11 +1,11 @@
 A pxl implementation in JS
 ==============================================================
 
-Based on Code by Rev Dan Catt, this is a stripped down version to just implement PXL in canvas.
+Based on Code by Rev Dan Catt, this is a stripped down version to just implement PXL Triangle in canvas.
 
 Goals
 ===========
-Full Cross Browser Compatibility.
+Full Cross Browser Compatibility. (Webkit 100%, IE Unknown, Gecko Unknown)
 Speed
 Small Size
 
