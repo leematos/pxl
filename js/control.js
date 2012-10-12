@@ -12,9 +12,9 @@ control = {
     //  Whenever the use resized the window we need to redraw the canvas because we
     //  can't just simply set it at 100% and be done with it. *But* don't do it
     //  each time we resize only when the user has probably stopped
-    $(window).resize(function() {
-      control.windowResize = setTimeout( function() { aesthetic.renderTiles(); }, 500);
-    });
+    //$(window).resize(function() {
+    //  control.windowResize = setTimeout( function() { aesthetic.renderTiles(); }, 500);
+    //});
 
     //$(document).bind('touchstart', function(e) {e.preventDefault();});
 
@@ -26,7 +26,6 @@ control = {
 
     $.getJSON("http://content.guardianapis.com/search?page-size=" + control.pageSize + "&format=json&show-fields=trailText%2Cheadline%2Cthumbnail&callback=?",
       function(json) {
-        control.pageSize = 1;
         if ('response' in json && 'results' in json.response && json.response.results.length > 0) {
           var thisStory = null;
           for (var i in json.response.results) {
@@ -41,10 +40,8 @@ control = {
             }
           }
         }
-	
 	aesthetic.loadimage();
       }
     );
-
   }
 };
