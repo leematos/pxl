@@ -5,12 +5,6 @@ aesthetic = {
   tileObj: null,
   tilesAcross: 20,
 
-
-  //  This function loads in the thumbnail image, sadly because the Guardian doesn't have CORS
-  //  going on we need to do a server proxy kind of trick to allow the canvas object to have
-  //  access to the data. In this case we tell a remote service to convert the image into BASE64
-  //  once we have that back we can load the BASE64 into an image, and as far as the security model
-  //  is concerned the image now comes from the same domain and we can raid its pixels!
   loadimage: function() {
 
     //  get the story we are about to broadcase
@@ -30,19 +24,11 @@ aesthetic = {
     $('img#holder').load(function() {aesthetic.copyToCanvas();});
 
     //  Do the fetch the image from the remote server as BASE64 dance.
-    //  the remote server is set up to prepend the Guardian URL onto the
-    //  thumbnail value so it can't just be used to load in images from
-    //  wherever anyone fancies :)
-    $.getJSON("http://127.0.0.1:5000/?img=" + thumb + "&callback=?",
-      
-      //  TODO: add error checking to this response
-      function(json) {
-        $('img#holder').attr('src', json.data);
-      }
-    );
+    $.getJSON("http://192.168.4.29:5000/?img=" + thumb + "&callback=?",function(json) {
+        $('img#holder').attr('src', json.data).css({'position':'absolute','top':'0','left':'0'});
+      });
 
   },
-
 
   //  Now the image is loaded we need to do a bunch of stuff.
   //  It needs to be converted to a canvas object and then we'll work
