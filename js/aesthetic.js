@@ -24,7 +24,7 @@ aesthetic = {
     $('img#holder').load(function() {aesthetic.copyToCanvas();});
 
     //  Do the fetch the image from the remote server as BASE64 dance.
-    $.getJSON("http://192.168.4.29:5000/?img=" + thumb + "&callback=?",function(json) {
+    $.getJSON("http://127.0.0.1:5000/?img=" + thumb + "&callback=?",function(json) {
         $('img#holder').attr('src', json.data).css({'position':'absolute','top':'0','left':'0'});
       });
 

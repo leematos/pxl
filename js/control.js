@@ -16,15 +16,7 @@ control = {
     //  control.windowResize = setTimeout( function() { aesthetic.renderTiles(); }, 500);
     //});
 
-    //$(document).bind('touchstart', function(e) {e.preventDefault();});
-
-    //  Go get the lates headline from the Guardian
-    control.getLatestHeadline();
-  },
-
-  getLatestHeadline: function() {
-
-    $.getJSON("http://content.guardianapis.com/search?page-size=" + control.pageSize + "&format=json&show-fields=trailText%2Cheadline%2Cthumbnail&callback=?",
+$.getJSON("http://content.guardianapis.com/search?page-size=" + control.pageSize + "&format=json&show-fields=trailText%2Cheadline%2Cthumbnail&callback=?",
       function(json) {
         if ('response' in json && 'results' in json.response && json.response.results.length > 0) {
           var thisStory = null;
@@ -43,5 +35,6 @@ control = {
 	aesthetic.loadimage();
       }
     );
-  }
+    //$(document).bind('touchstart', function(e) {e.preventDefault();});
+  },
 };
