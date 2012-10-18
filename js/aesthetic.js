@@ -6,40 +6,12 @@ aesthetic = {
   tilesAcross: 20,
 
   loadimage: function() {
-
-    //  get the story we are about to broadcase
-    var story = control.radioQueue[0];
-
-    //  get the image URL
-    var thumb = story.thumbnail;
-
-    //  remove an old image, just incase I've somehow missed removing it in the
-    //  clean-up from last time (I shouldn't, but goodness knows what I'll do in the
-    //  future that may involve skipping chunks of code when I hit errors)
-    $('img#holder').remove();
+    
     $('#hiddenStuff').append($('<img>').attr('id', 'holder'));
-
-    //  add the load event, so when the BASE64 comes back from the server
-    //  the next function will kick in.
     $('img#holder').load(function() {aesthetic.copyToCanvas();});
-
-    //  Do the fetch the image from the remote server as BASE64 dance.
-    $.getJSON("http://127.0.0.1:5000/?img=" + thumb + "&callback=?",function(json) {
-        $('img#holder').attr('src', json.data).css({'position':'absolute','top':'0','left':'0'});
-      });
-
+    $('img#holder').attr('src', 'frog2.jpg').css({'position':'absolute','top':'0','left':'0'});
   },
 
-  //  Now the image is loaded we need to do a bunch of stuff.
-  //  It needs to be converted to a canvas object and then we'll work
-  //  out how to break it down into as close to square tiles as we can get
-  //
-  //  Then once we know the size of a single 'tile' I'm going to do something
-  //  crazy involving making another canvas the same size, dividing it along the
-  //  diagonals and shoving the pixels in each triangle created by the diagonals
-  //  into a 2D array, so later on I can quickly work out of a pixel within an
-  //  area is in the top, left, right or bottom quarter. (If this was done with
-  //  square subdivisions instead of diagonal triangles it'd be so much easier)
   copyToCanvas: function() {
 
 
