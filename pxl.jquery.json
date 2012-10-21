@@ -1,0 +1,21 @@
+{
+    "name": "pxl",
+    "version": "0.0.1",
+    "title": "pxl",
+    "author": {
+        "name": "Lee Matos",
+        "url": "https://github.com/leematos"
+    },
+    ],
+    "dependencies": {
+        "jquery": ">=1.6"
+    },
+    "description": "A canvas based implementation of pxl's triangle rendering.",
+    "keywords": [
+        "color",
+        "pxl",
+        "canvas",
+        "image",
+	"effect"
+    ],
+}
