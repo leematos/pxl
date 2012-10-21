@@ -16,8 +16,7 @@ aesthetic = {
 
 
     //  do the canvas dance to so we can grab the data.
-    var c=$('#sourceCanvas')[0];
-    var ctx=c.getContext("2d");
+    var ctx=$('#sourceCanvas')[0].getContext("2d");
     ctx.drawImage($("img#holder")[0], 0, 0);
 
 
@@ -47,20 +46,13 @@ aesthetic = {
     tileObj.height = Math.floor(tileObj.imgHeight/tileObj.down);
 
 
-    //  Because maths is hard, and I don't want to have to work out which top, left, right, bottom quarter a pixel
-    //  falls in, because it's late and I'm tired, instead I'm just going to draw an image with the 4 quarters
-    //  in different colours. Then grab the image data back from the thing we just drew, looping over it and
-    //  grabbing the colours back out, and stuffing the results into an array
-    //
-    //  This all makes perfect sense!!
-    $('#tileMap').remove();
+    // Create a tile map to base rendering off of.
     $('#hiddenStuff').append($('<canvas>').attr({'id': 'tileMap'}));
     $('#tileMap').attr({'width': tileObj.width, 'height': tileObj.height});
     $('#tileMap').css({'width': tileObj.width + 'px', 'height': tileObj.height + 'px'});
     
     //  grab the data
-    var tm=$('#tileMap')[0];
-    var tmx=tm.getContext("2d");
+    var tmx=$('#tileMap')[0].getContext("2d");
 
     //  Top quarter
     tmx.fillStyle="rgb(0, 0, 255)";
@@ -90,7 +82,7 @@ aesthetic = {
     tmx.closePath();
     tmx.fill();
 
-    //  Ok, now we have that draw out let's grab the image data out and then
+    //  Ok, now we have that drawn out let's grab the image data out and then
     //  work out which pixel is top, left, right or bottom
     var mapData = tmx.getImageData(0, 0, tileObj.width, tileObj.height);
     var tileMap = [];
@@ -149,8 +141,7 @@ aesthetic = {
     
 
     //  get access to the raw data so we can draw on the canvas
-    var ct=$('#targetCanvas')[0];
-    var ctxt=ct.getContext("2d");
+    var ctxt=$('#targetCanvas')[0].getContext("2d");
 
 
     //  Ok, now the new way of doing the tile thing around here, first we're going to loop thru the source image
