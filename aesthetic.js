@@ -10,7 +10,6 @@ aesthetic = {
     $('#hiddenStuff').append($('<img>').attr('id', 'holder'));
     $('img#holder').load(function() {aesthetic.copyToCanvas();});
     $('img#holder').attr('src','frog2.jpg')
-    //.css({'position':'absolute','top':'0','left':'0'});
   },
 
   copyToCanvas: function() {
