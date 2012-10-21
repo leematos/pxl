@@ -5,11 +5,11 @@ aesthetic = {
   tileObj: null,
   tilesAcross: 20,
 
-  loadimage: function() {
+  loadimage: function(img) {
     
     $('#hiddenStuff').append($('<img>').attr('id', 'holder'));
     $('img#holder').load(function() {aesthetic.copyToCanvas();});
-    $('img#holder').attr('src','frog2.jpg')
+    $('img#holder').attr('src',img)
   },
 
   copyToCanvas: function() {
