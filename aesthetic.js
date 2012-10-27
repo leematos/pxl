@@ -136,8 +136,8 @@ aesthetic = {
     //  remove the old target canvas and drop in a new one at the full screen size
     $('#targetCanvas').remove();
     $('#targetHolder').append($('<canvas>').attr({'id': 'targetCanvas'}));
-    $('#targetCanvas').attr({'width': $(window).innerWidth(), 'height': $(window).innerHeight()});
-    $('#targetCanvas').css({'width': $(window).innerWidth() + 'px', 'height': $(window).innerHeight() + 'px'});
+    $('#targetCanvas').attr({'width': screen.width, 'height': screen.height});
+    $('#targetCanvas').css({'width': screen.width + 'px', 'height': screen.height + 'px'});
     
 
     //  get access to the raw data so we can draw on the canvas
@@ -217,10 +217,10 @@ aesthetic = {
         //  because I'm going to be using these values a lot for drawing the end result and they're
         //  a bit boggling I'm just going to work them out here.
         var targetCorners = {
-          top: Math.floor(tileY * $(window).innerHeight() / aesthetic.tileObj.down),
-          bottom: Math.floor((tileY+1) * $(window).innerHeight() / aesthetic.tileObj.down) + 1,
-          left: Math.floor(tileX * $(window).innerWidth() / aesthetic.tileObj.across),
-          right: Math.floor((tileX+1) * $(window).innerWidth() / aesthetic.tileObj.across) + 1
+          top: Math.floor(tileY * screen.height / aesthetic.tileObj.down),
+          bottom: Math.floor((tileY+1) * screen.height / aesthetic.tileObj.down) + 1,
+          left: Math.floor(tileX * screen.width / aesthetic.tileObj.across),
+          right: Math.floor((tileX+1) * screen.width / aesthetic.tileObj.across) + 1
         };
 
         //  Now if the difference between the top & left quarters is lower than all the others
